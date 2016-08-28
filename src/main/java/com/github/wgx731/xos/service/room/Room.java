@@ -6,6 +6,8 @@ public interface Room {
 
     public String getNextPlayer();
 
+    public String getCurrentPlayer();
+
     public int getNumOfPlayers();
 
 }

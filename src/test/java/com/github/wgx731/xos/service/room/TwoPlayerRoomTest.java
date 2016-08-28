@@ -52,6 +52,19 @@ public class TwoPlayerRoomTest {
     }
 
     @Test
+    public void testGetCurrentPlayer() throws RoomException {
+        testRoom.addPlayer(P1);
+        testRoom.addPlayer(P2);
+        String returnString = testRoom.getCurrentPlayer();
+        assertThat(returnString).isEqualTo(P1);
+        testRoom.getNextPlayer();
+        returnString = testRoom.getCurrentPlayer();
+        assertThat(returnString).isEqualTo(P2);
+        returnString = testRoom.getCurrentPlayer();
+        assertThat(returnString).isEqualTo(P2);
+    }
+
+    @Test
     public void testGetNumOfPlayers() throws RoomException {
         int returnNum = testRoom.getNumOfPlayers();
         assertThat(returnNum).isEqualTo(0);

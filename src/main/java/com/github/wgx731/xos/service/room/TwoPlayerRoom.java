@@ -34,6 +34,11 @@ public class TwoPlayerRoom implements Room {
     }
 
     @Override
+    public String getCurrentPlayer() {
+        return players[round % MAX_NUM_OF_PLAYERS];
+    }
+
+    @Override
     public int getNumOfPlayers() {
         return numOfPlayers;
     }
