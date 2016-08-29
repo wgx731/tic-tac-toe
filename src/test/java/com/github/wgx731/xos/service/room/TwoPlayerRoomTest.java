@@ -24,6 +24,20 @@ public class TwoPlayerRoomTest {
         testRoom = null;
     }
 
+    @Test
+    public void testReset() throws RoomException {
+        testRoom.addPlayer(P1);
+        testRoom.addPlayer(P2);
+        int returnNum = testRoom.getRoundNum();
+        assertThat(returnNum).isEqualTo(0);
+        testRoom.getNextPlayer();
+        returnNum = testRoom.getRoundNum();
+        assertThat(returnNum).isEqualTo(1);
+        testRoom.reset();
+        returnNum = testRoom.getRoundNum();
+        assertThat(returnNum).isEqualTo(0);
+    }
+
     @Test(expected = RoomException.class)
     public void testAddPlayer() throws RoomException {
 
@@ -73,6 +87,20 @@ public class TwoPlayerRoomTest {
         assertThat(returnNum).isEqualTo(1);
         testRoom.addPlayer(P2);
         returnNum = testRoom.getNumOfPlayers();
+        assertThat(returnNum).isEqualTo(2);
+    }
+
+    @Test
+    public void testGetRoundNum() throws RoomException {
+        testRoom.addPlayer(P1);
+        testRoom.addPlayer(P2);
+        int returnNum = testRoom.getRoundNum();
+        assertThat(returnNum).isEqualTo(0);
+        testRoom.getNextPlayer();
+        returnNum = testRoom.getRoundNum();
+        assertThat(returnNum).isEqualTo(1);
+        testRoom.getNextPlayer();
+        returnNum = testRoom.getRoundNum();
         assertThat(returnNum).isEqualTo(2);
     }
 

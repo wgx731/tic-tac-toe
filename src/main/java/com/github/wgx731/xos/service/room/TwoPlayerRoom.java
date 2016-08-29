@@ -8,7 +8,12 @@ public class TwoPlayerRoom implements Room {
 
     private String[] players = new String[MAX_NUM_OF_PLAYERS];
     private int numOfPlayers = 0;
-    private int round = 0;
+    private int numOfRound = 0;
+
+    @Override
+    public void reset() {
+        numOfRound = 0;
+    }
 
     @Override
     public String addPlayer(String player) {
@@ -28,19 +33,24 @@ public class TwoPlayerRoom implements Room {
                         "Need %d players in the room.",
                         MAX_NUM_OF_PLAYERS));
         }
-        String nextPlayer = players[round % MAX_NUM_OF_PLAYERS];
-        round++;
+        String nextPlayer = players[numOfRound % MAX_NUM_OF_PLAYERS];
+        numOfRound++;
         return nextPlayer;
     }
 
     @Override
     public String getCurrentPlayer() {
-        return players[round % MAX_NUM_OF_PLAYERS];
+        return players[numOfRound % MAX_NUM_OF_PLAYERS];
     }
 
     @Override
     public int getNumOfPlayers() {
         return numOfPlayers;
+    }
+
+    @Override
+    public int getRoundNum() {
+        return numOfRound;
     }
 
 }
