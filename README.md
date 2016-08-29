@@ -9,6 +9,7 @@
 * Practice testing (e.g. unit testing, code coverage)
 
 ## Project Structure
+```
 .
 ├── build
 ├── build.gradle
@@ -58,6 +59,7 @@
                                     └── ConsoleViewTest.java
 
 84 directories, 81 files
+```
 
 ## TODO
 
