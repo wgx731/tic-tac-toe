@@ -1,5 +1,6 @@
 plugins {
-  id "net.ltgt.apt" version "0.8"
+    id "net.ltgt.apt" version "0.8"
+    id "com.github.kt3k.coveralls" version "2.4.0"
 }
 
 apply plugin: "java"
@@ -19,17 +20,17 @@ jar {
 }
 
 jacoco {
-    toolVersion = "0.7.6.201602180812"
-    reportsDir = file("${buildDir}/reports/jacoco")
+  toolVersion = "0.7.6.201602180812"
 }
 
 jacocoTestReport {
     reports {
-        xml.enabled false
-        csv.enabled false
-        html.destination "${buildDir}/reports/jacoco/html"
+        xml.enabled = true
+        html.enabled = true
     }
 }
+
+check.dependsOn jacocoTestReport
 
 dependencies {
     compile "org.slf4j:slf4j-api:1.7.21"
@@ -40,3 +41,7 @@ dependencies {
     testCompile "org.assertj:assertj-core:3.5.2"
     testCompile "org.mockito:mockito-core:2.0.111-beta"
 }
+
+version = '1.0.0'
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
