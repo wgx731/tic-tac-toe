@@ -7,12 +7,13 @@ import javax.inject.Inject;
 
 public class TwoPlayerTicTacToeEngine implements Engine {
 
-    private static final char X_MOVE = 'X';
-    private static final char O_MOVE = 'O';
-    private static final char EMPTY = 'E';
-    private static final int DEFAULT_BOARD_NUM = 3;
+    static final char X_MOVE = 'X';
+    static final char O_MOVE = 'O';
+    static final char EMPTY = 'E';
+    static final int DEFAULT_BOARD_NUM = 3;
 
     private final Room gameRoom;
+
     private int boardNum;
     private char[] board;
     private State gameState;
@@ -20,7 +21,7 @@ public class TwoPlayerTicTacToeEngine implements Engine {
     private char currentMove = X_MOVE;
 
     @Inject
-    TwoPlayerTicTacToeEngine(Room gameRoom) {
+    public TwoPlayerTicTacToeEngine(Room gameRoom) {
         this.gameRoom = gameRoom;
         reset(DEFAULT_BOARD_NUM);
     }
@@ -30,6 +31,10 @@ public class TwoPlayerTicTacToeEngine implements Engine {
         return gameRoom;
     }
 
+    @Override
+    public char getCurrentMove() {
+        return currentMove;
+    }
 
     @Override
     public void reset(int boardNum) {
@@ -47,11 +52,14 @@ public class TwoPlayerTicTacToeEngine implements Engine {
     @Override
     public String getBoard() {
         StringBuffer sb = new StringBuffer();
+        sb.append(System.lineSeparator());
+        int digit = String.valueOf(total).length();
+        String template = String.format("%%0%dd", digit);
         for (int i = 0; i < total; i++) {
             // output current cell
             sb.append(" ");
             if (board[i] == EMPTY) {
-                sb.append(i + 1);
+                sb.append(String.format(template, i + 1));
             }
             else {
                 sb.append(board[i]);
@@ -63,7 +71,7 @@ public class TwoPlayerTicTacToeEngine implements Engine {
             }
             else {
                 sb.append(System.lineSeparator());
-                for (int j = 0; j < 3 * boardNum + 2; j++) {
+                for (int j = 0; j < (3 + digit) * boardNum - 1; j++) {
                     sb.append("-");
                 }
                 sb.append(System.lineSeparator());
@@ -96,8 +104,8 @@ public class TwoPlayerTicTacToeEngine implements Engine {
         if (!isOnBoard(index)) {
             throw new EngineException(
                 String.format(
-                    "Invalid index %d, must be within [0-%d).",
-                    index,
+                    "Invalid move %d, must be within [1-%d).",
+                    index + 1,
                     total
                     )
                 );
@@ -105,8 +113,8 @@ public class TwoPlayerTicTacToeEngine implements Engine {
         if (board[index] != EMPTY) {
             throw new EngineException(
                 String.format(
-                    "Invalid index %d, borad not empty.",
-                    index
+                    "Invalid move %d, borad not empty.",
+                    index + 1
                     )
                 );
         }

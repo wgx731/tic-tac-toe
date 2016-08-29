@@ -11,28 +11,28 @@ import static org.assertj.core.api.Assertions.*;
 
 public class TwoPlayerTicTacToeEngineTest {
 
-    private static final String INIT_BOARD  = " 1 | 2 | 3 \n" +
+    private static final String INIT_BOARD  = "\n 1 | 2 | 3 \n" +
                                               "-----------\n" +
                                               " 4 | 5 | 6 \n" +
                                               "-----------\n" +
                                               " 7 | 8 | 9 \n" +
                                               "-----------\n";
 
-    private static final String X_WIN_BOARD = " X | O | 3 \n" +
+    private static final String X_WIN_BOARD = "\n X | O | 3 \n" +
                                               "-----------\n" +
                                               " O | X | 6 \n" +
                                               "-----------\n" +
                                               " 7 | 8 | X \n" +
                                               "-----------\n";
 
-    private static final String O_WIN_BOARD = " X | X | O \n" +
+    private static final String O_WIN_BOARD = "\n X | X | O \n" +
                                               "-----------\n" +
                                               " X | O | 6 \n" +
                                               "-----------\n" +
                                               " O | 8 | 9 \n" +
                                               "-----------\n";
 
-    private static final String DRAW_BOARD  = " X | O | X \n" +
+    private static final String DRAW_BOARD  = "\n X | O | X \n" +
                                               "-----------\n" +
                                               " O | X | X \n" +
                                               "-----------\n" +
@@ -64,6 +64,18 @@ public class TwoPlayerTicTacToeEngineTest {
         Room testRoom = testEngine.getGameRoom();
         assertThat(testRoom).isNotNull();
         assertThat(testRoom).isEqualTo(room);
+    }
+
+    @Test
+    public void testGetCurrentMove() {
+        char currentMove = testEngine.getCurrentMove();
+        assertThat(currentMove).isEqualTo(TwoPlayerTicTacToeEngine.X_MOVE);
+        testEngine.placeMove(1);
+        currentMove = testEngine.getCurrentMove();
+        assertThat(currentMove).isEqualTo(TwoPlayerTicTacToeEngine.O_MOVE);
+        testEngine.placeMove(2);
+        currentMove = testEngine.getCurrentMove();
+        assertThat(currentMove).isEqualTo(TwoPlayerTicTacToeEngine.X_MOVE);
     }
 
     @Test

@@ -6,6 +6,8 @@ public interface Engine {
 
     public Room getGameRoom();
 
+    public char getCurrentMove();
+
     public void reset(int boardNum);
 
     public String getBoard();
