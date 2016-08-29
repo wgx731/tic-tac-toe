@@ -18,25 +18,25 @@ public class TwoPlayerTicTacToeEngineTest {
                                               " 7 | 8 | 9 \n" +
                                               "-----------\n";
 
-    private static final String X_WIN_BOARD = "\n X | O | 3 \n" +
+    private static final String X_WIN_BOARD = "\n x | o | 3 \n" +
                                               "-----------\n" +
-                                              " O | X | 6 \n" +
+                                              " o | x | 6 \n" +
                                               "-----------\n" +
-                                              " 7 | 8 | X \n" +
+                                              " 7 | 8 | x \n" +
                                               "-----------\n";
 
-    private static final String O_WIN_BOARD = "\n X | X | O \n" +
+    private static final String O_WIN_BOARD = "\n x | x | o \n" +
                                               "-----------\n" +
-                                              " X | O | 6 \n" +
+                                              " x | o | 6 \n" +
                                               "-----------\n" +
-                                              " O | 8 | 9 \n" +
+                                              " o | 8 | 9 \n" +
                                               "-----------\n";
 
-    private static final String DRAW_BOARD  = "\n X | O | X \n" +
+    private static final String DRAW_BOARD  = "\n x | o | x \n" +
                                               "-----------\n" +
-                                              " O | X | X \n" +
+                                              " o | x | x \n" +
                                               "-----------\n" +
-                                              " O | X | O \n" +
+                                              " o | x | o \n" +
                                               "-----------\n";
 
     private static final String PLAYER_ONE  = "Eric";

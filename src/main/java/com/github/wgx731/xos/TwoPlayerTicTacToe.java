@@ -8,8 +8,11 @@ import com.github.wgx731.xos.exception.EngineException;
 import com.github.wgx731.xos.exception.RoomException;
 
 import javax.inject.Inject;
+import java.util.InputMismatchException;
 
 public class TwoPlayerTicTacToe {
+
+    private final static int BOARD_NUM = 5;
 
     private final Engine engine;
     private final View view;
@@ -35,7 +38,7 @@ public class TwoPlayerTicTacToe {
                 String.format(PLAYER_NAME_TEMPLATE, 2)
             );
             room.addPlayer(playerTwo);
-            engine.reset(5);
+            engine.reset(BOARD_NUM);
             view.inform(engine.getBoard());
             // NOTO: user input will be 1 based
             int move = 0;

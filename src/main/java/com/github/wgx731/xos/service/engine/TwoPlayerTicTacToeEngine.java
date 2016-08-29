@@ -7,9 +7,9 @@ import javax.inject.Inject;
 
 public class TwoPlayerTicTacToeEngine implements Engine {
 
-    static final char X_MOVE = 'X';
-    static final char O_MOVE = 'O';
-    static final char EMPTY = 'E';
+    static final char X_MOVE = 'x';
+    static final char O_MOVE = 'o';
+    static final char EMPTY = 'e';
     static final int DEFAULT_BOARD_NUM = 3;
 
     private final Room gameRoom;
