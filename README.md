@@ -62,5 +62,6 @@
 :boom: better `build.gradle`
 :bowling: refactor and better design
 :secret: Game Server using [grpc](http://www.grpc.io)
+:book: better docs
 
 /play letitgo
