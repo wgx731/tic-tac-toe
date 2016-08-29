@@ -10,6 +10,20 @@ repositories {
     jcenter()
 }
 
+version = '1.0.0'
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
+
+dependencies {
+    compile "org.slf4j:slf4j-api:1.7.21"
+    compile "com.google.dagger:dagger:2.6.1"
+    apt "com.google.dagger:dagger-compiler:2.6.1"
+
+    testCompile "junit:junit:4.12"
+    testCompile "org.assertj:assertj-core:3.5.2"
+    testCompile "org.mockito:mockito-core:2.0.111-beta"
+}
+
 jar {
     manifest {
         attributes "Main-Class": "com.github.wgx731.xos.Main"
@@ -32,16 +46,6 @@ jacocoTestReport {
 
 check.dependsOn jacocoTestReport
 
-dependencies {
-    compile "org.slf4j:slf4j-api:1.7.21"
-    compile "com.google.dagger:dagger:2.6.1"
-    apt "com.google.dagger:dagger-compiler:2.6.1"
-
-    testCompile "junit:junit:4.12"
-    testCompile "org.assertj:assertj-core:3.5.2"
-    testCompile "org.mockito:mockito-core:2.0.111-beta"
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.0'
 }
-
-version = '1.0.0'
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
