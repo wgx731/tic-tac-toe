@@ -1,5 +1,7 @@
 # Tic Tac Toe
 
+[![Travis](https://img.shields.io/travis/wgx731/tic-tac-toe.svg?style=flat)](https://travis-ci.org/wgx731/tic-tac-toe) [![GitHub issues](https://img.shields.io/github/issues/wgx731/tic-tac-toe.svg?style=flat)](https://github.com/wgx731/tic-tac-toe/issues) [![GitHub forks](https://img.shields.io/github/forks/wgx731/tic-tac-toe.svg?style=flat)](https://github.com/wgx731/tic-tac-toe/network) [![GitHub stars](https://img.shields.io/github/stars/wgx731/tic-tac-toe.svg?style=flat)](https://github.com/wgx731/tic-tac-toe/stargazers)
+
 ## Project Goal
 
 * Practice software design (MVC)
