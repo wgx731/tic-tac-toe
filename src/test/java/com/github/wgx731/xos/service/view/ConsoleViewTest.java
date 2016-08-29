@@ -2,6 +2,7 @@ package com.github.wgx731.xos.service.view;
 
 import java.io.BufferedReader;
 import java.io.PrintStream;
+import java.io.InputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ByteArrayInputStream;
 
@@ -12,6 +13,10 @@ import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 public class ConsoleViewTest {
+
+    private static final InputStream systemIn = System.in;
+    private static final PrintStream systemOut = System.out;
+    private static final PrintStream systemErr = System.err;
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
@@ -26,8 +31,8 @@ public class ConsoleViewTest {
 
     @After
     public void tearDown() {
-        System.setOut(null);
-        System.setErr(null);
+        System.setOut(systemOut);
+        System.setErr(systemErr);
         testView = null;
     }
 
@@ -45,6 +50,7 @@ public class ConsoleViewTest {
         assertThat(returnString).isEqualTo(playerName);
         assertThat(outContent.toString().trim()).isEqualTo(askPlayerName);
         assertThat(errContent.toString()).isEqualTo("");
+        System.setIn(systemIn);
     }
 
     @Test
@@ -61,6 +67,7 @@ public class ConsoleViewTest {
         assertThat(returnInt).isEqualTo(move);
         assertThat(outContent.toString().trim()).isEqualTo(askMove);
         assertThat(errContent.toString()).isEqualTo("");
+        System.setIn(systemIn);
     }
 
     @Test
